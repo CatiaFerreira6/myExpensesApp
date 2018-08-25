@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
         List<Record> records = new ArrayList<>();
         records.add(new Record(new Category("code", "description"),new Type("code", "description"),
-                new SubCategory("code","description"), new Account("number","description"), new Date(), "first record", 250.42, 3000.50
+                new SubCategory("code","description"), new Account("number","description", 23450d), new Date(), "first record", 250.42
                 ));
 
         // specify an adapter (see also next example)
