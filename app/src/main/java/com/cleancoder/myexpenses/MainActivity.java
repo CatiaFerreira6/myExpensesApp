@@ -10,6 +10,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.cleancoder.myexpenses.adapters.RecordAdapter;
+import com.cleancoder.myexpenses.data.RecordRepositoryContract;
+import com.cleancoder.myexpenses.data.RecordRepositoryImplementation;
 import com.cleancoder.myexpenses.models.Account;
 import com.cleancoder.myexpenses.models.Category;
 import com.cleancoder.myexpenses.models.Record;
@@ -29,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        RecordRepositoryContract recordRepo = new RecordRepositoryImplementation();
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -36,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //change view to new Record view
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
@@ -43,21 +49,14 @@ public class MainActivity extends AppCompatActivity {
 
         mRecyclerView = findViewById(R.id.latestRecords);
 
-        // use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
+        // changes in content do not change the layout size of the RecyclerView
         mRecyclerView.setHasFixedSize(true);
 
         // use a linear layout manager
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        List<Record> records = new ArrayList<>();
-        records.add(new Record(new Category("code", "description"),new Type("code", "description"),
-                new SubCategory("code","description"), new Account("number","description", 23450d), new Date(), "first record", 250.42
-                ));
-
-        // specify an adapter (see also next example)
-        mAdapter = new RecordAdapter(records);
+        mAdapter = new RecordAdapter(recordRepo.getLatest(5));
         mRecyclerView.setAdapter(mAdapter);
     }
 

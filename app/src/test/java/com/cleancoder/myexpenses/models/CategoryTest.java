@@ -8,7 +8,8 @@ public class CategoryTest {
 
     @Test
     public void getId() {
-        Category category = new Category("categoryCode", "categoryDescription");
+        Type expenseType = new Type("EXPENSE", "Expense");
+        Category category = new Category("categoryCode", "categoryDescription", expenseType);
 
         assertEquals((Long) 0L, category.getId());
     }

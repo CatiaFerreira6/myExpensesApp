@@ -3,7 +3,6 @@ package com.cleancoder.myexpenses.models;
 import java.util.Date;
 
 public class Record {
-
     private Long id = 0L;
     private Date date;
     public String description;
@@ -28,6 +27,10 @@ public class Record {
         if(account != null) {
             this.currentBalance = (account.getBalance() + value);
         }
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public Account getAccount() {
