@@ -11,7 +11,7 @@ public class RecordTest {
     private Account acct = new Account("number", "description", 3000d);
     private Date newDate = new Date();
 
-    private Record record = new Record(null, null, null, acct, newDate, "description", 230.23);
+    private Record record = new Record(acct, new SubCategory("code", null, null), newDate, 230.23, null);
 
     @Test
     public void getAccount() {

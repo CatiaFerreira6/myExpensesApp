@@ -6,7 +6,10 @@ import static org.junit.Assert.*;
 
 public class SubCategoryTest {
 
-    private SubCategory subCategory = new SubCategory("code", "description");
+    Type expenseType = new Type("EXPENSE", "Expense");
+    Category category = new Category("HOME", "Home", expenseType);
+
+    private SubCategory subCategory = new SubCategory("code", "description", category);
 
     @Test
     public void getId() {
@@ -16,5 +19,20 @@ public class SubCategoryTest {
     @Test
     public void getDescription() {
         assertEquals("description", subCategory.getDescription());
+    }
+
+    @Test
+    public void getCode() {
+        assertEquals("code", subCategory.getCode());
+    }
+
+    @Test
+    public void getCategoryId() {
+        assertEquals(Long.valueOf(0L), subCategory.getCategoryId());
+    }
+
+    @Test
+    public void getCategoryCode() {
+        assertEquals("HOME", subCategory.getCategoryCode());
     }
 }

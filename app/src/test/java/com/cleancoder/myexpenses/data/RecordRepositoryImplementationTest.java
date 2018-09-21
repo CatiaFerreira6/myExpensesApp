@@ -46,7 +46,7 @@ public class RecordRepositoryImplementationTest {
         Record newRecord = new Record(
                 new Category("HOME", "Home", expenseType),
                 new Type("EXPENSE", "Expense"),
-                new SubCategory("ELECTRICAL","Electrical Bill"),
+                new SubCategory("ELECTRICAL","Electrical Bill", new Category("HOME", "Home", expenseType)),
                 new Account("111","Primary Account", 2345d),
                 new Date(),
                 "Electrical Bill",

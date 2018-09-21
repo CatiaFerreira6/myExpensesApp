@@ -17,41 +17,34 @@ public class RecordRepositoryImplementation implements RecordRepositoryContract 
     public RecordRepositoryImplementation(){
         Type expenseType = new Type("EXPENSE", "Expense");
         Type incomeType = new Type("INCOME", "Income");
-        Account account = new Account("111","Primary Account", 2345d);
+        Account account = new Account("111",2345d, "Primary Account");
 
         records.add(
                 new Record(
-                        new Category("HOME", "Home", expenseType),
-                        new Type("EXPENSE", "Expense"),
-                        new SubCategory("ELECTRICAL","Electrical Bill"),
                         account,
+                        new SubCategory("ELECTRICAL","Electrical Bill", new Category("HOME", "Home", expenseType)),
                         new Date(),
-                        "Electrical Bill",
-                        -40.42
+                        -40.42,
+                        "Electrical Bill"
                 )
         );
 
         records.add(
-                new Record(
-                        new Category("HOME", "Home", expenseType),
-                        new Type("EXPENSE", "Expense"),
-                        new SubCategory("WATER","Water Bill"),
-                        account,
+                new Record(account,
+                        new SubCategory("WATER","Water Bill", new Category("HOME", "Home", expenseType)),
                         new Date(),
-                        "Water Bill",
-                        -50.65
+                        -50.65,
+                        "Water Bill"
+
                 )
         );
 
         records.add(
-                new Record(
-                        new Category("SALARY", "Salary", incomeType),
-                        new Type("INCOME", "Income"),
-                        null,
-                        account,
+                new Record(account,
+                        new SubCategory("SALARY","Salary", new Category("SALARY", "Salary", incomeType)),
                         new Date(),
-                        "Monthly Salary",
-                        1000d
+                        1000d,
+                        "Monthly Salary"
                 )
         );
     }
