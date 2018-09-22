@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.cleancoder.myexpenses.R;
-import com.cleancoder.myexpenses.models.Record;
+import com.cleancoder.myexpenses.db.entities.Record;
 
 import java.util.List;
 

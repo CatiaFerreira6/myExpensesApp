@@ -1,9 +1,12 @@
-package com.cleancoder.myexpenses.data;
+package com.cleancoder.myexpenses.db.dao;
 
 import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Delete;
+import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
+import android.arch.persistence.room.Update;
 
-import com.cleancoder.myexpenses.models.SubCategory;
+import com.cleancoder.myexpenses.db.entities.SubCategory;
 
 import java.util.List;
 
@@ -24,7 +27,12 @@ public interface SubCategoryRepositoryContract {
             "where category.code = :code")
     List<SubCategory> getByCategory(String code);
 
-    //SubCategory create(SubCategory newSubCategory);
-    //SubCategory update(SubCategory updatedSubCategory);
-    //boolean delete(Long id);
+    @Insert
+    SubCategory create(SubCategory newSubCategory);
+
+    @Update
+    SubCategory update(SubCategory updatedSubCategory);
+
+    @Delete
+    boolean delete(Long id);
 }

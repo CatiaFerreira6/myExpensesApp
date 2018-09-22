@@ -1,4 +1,4 @@
-package com.cleancoder.myexpenses;
+package com.cleancoder.myexpenses.ui;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,18 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import com.cleancoder.myexpenses.adapters.RecordAdapter;
-import com.cleancoder.myexpenses.data.RecordRepositoryContract;
-import com.cleancoder.myexpenses.data.RecordRepositoryImplementation;
-import com.cleancoder.myexpenses.models.Account;
-import com.cleancoder.myexpenses.models.Category;
-import com.cleancoder.myexpenses.models.Record;
-import com.cleancoder.myexpenses.models.SubCategory;
-import com.cleancoder.myexpenses.models.Type;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import com.cleancoder.myexpenses.R;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
@@ -32,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        RecordRepositoryContract recordRepo = new RecordRepositoryImplementation();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -56,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        mAdapter = new RecordAdapter(recordRepo.getLatest(5));
         mRecyclerView.setAdapter(mAdapter);
     }
 

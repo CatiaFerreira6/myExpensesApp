@@ -1,14 +1,17 @@
 package com.cleancoder.myexpenses.login;
 
-import java.util.ArrayList;
+import android.app.Application;
+
+import com.cleancoder.myexpenses.App;
+import com.cleancoder.myexpenses.db.entities.User;
+import com.cleancoder.myexpenses.db.repositories.UserRepository;
 
 public class LoginImplementation implements LoginContract {
 
-    private ArrayList<String> userData = new ArrayList<>();
+    private UserRepository userRepository;
 
-    public LoginImplementation(){
-        userData.add("foo@example.com:hello");
-        userData.add("bar@example.com:hello");
+    public LoginImplementation(Application application){
+        userRepository = ((App) application).getUserRepository();
     }
 
     @Override
@@ -21,18 +24,21 @@ public class LoginImplementation implements LoginContract {
     }
 
     @Override
-    public boolean login(String email, String password) {
-        return (validEmail(email) && validPassword(password) && userExists(email, password));
-    }
-
-    private boolean userExists(String email, String password){
-        for(String user: userData){
-            String[] creds = user.split(":");
-            if(creds[0].equals(email) && creds[1].equals(password)){
-                return true;
-            }
+    public User login(String email, String password) {
+        if(validEmail(email) && validPassword(password)){
+            return userExists(email, password);
         }
 
-        return false;
+        return null;
+    }
+
+    private User userExists(String email, String password){
+        User user = userRepository.getByEmail(email);
+
+        if(user.getPassword().equals(password)){
+            return user;
+        } else {
+            return null;
+        }
     }
 }

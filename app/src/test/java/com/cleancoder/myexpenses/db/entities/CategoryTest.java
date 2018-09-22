@@ -1,4 +1,4 @@
-package com.cleancoder.myexpenses.models;
+package com.cleancoder.myexpenses.db.entities;
 
 import org.junit.Test;
 

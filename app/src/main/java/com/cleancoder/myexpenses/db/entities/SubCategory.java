@@ -1,4 +1,4 @@
-package com.cleancoder.myexpenses.models;
+package com.cleancoder.myexpenses.db.entities;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
