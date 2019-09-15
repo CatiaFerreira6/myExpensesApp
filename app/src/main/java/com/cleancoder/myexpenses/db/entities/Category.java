@@ -14,19 +14,26 @@ import android.arch.persistence.room.PrimaryKey;
 public class Category {
 
     @PrimaryKey(autoGenerate = true)
-    private Long id = 0L;
+    public Long id = 0L;
 
     @ColumnInfo(name = "code")
-    private String code;
+    public String code;
 
     @ColumnInfo(name = "description")
     public String description;
 
     @ColumnInfo(name = "type_id")
-    private Long typeId;
+    public Long typeId;
 
     @Ignore
     public Type type;
+
+    public Category(Long id, String code, String description, Long typeId){
+        this.id = id;
+        this.code = code;
+        this.description = description;
+        this.typeId = typeId;
+    }
 
     public Category(Long id, String code, String description, Type type) {
         this.id = id;
@@ -34,20 +41,12 @@ public class Category {
         this.description = description;
         this.type = type;
 
-        typeId = type.getId();
+        typeId = type.id;
     }
 
     public Category(String code, String description, Type type) {
         this.code = code;
         this.description = description;
         this.type = type;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getCode() {
-        return code;
     }
 }

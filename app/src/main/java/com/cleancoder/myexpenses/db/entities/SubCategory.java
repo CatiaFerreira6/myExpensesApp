@@ -6,6 +6,7 @@ import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
+import android.arch.persistence.room.Relation;
 import android.support.annotation.NonNull;
 
 @Entity(tableName = "sub_category",
@@ -15,47 +16,33 @@ import android.support.annotation.NonNull;
 public class SubCategory {
 
     @PrimaryKey(autoGenerate = true)
-    private Long id = 0L;
+    public Long id = 0L;
 
     @NonNull
     @ColumnInfo(name = "code")
-    private String code;
+    public String code;
 
     @ColumnInfo(name = "description")
-    private String description;
+    public String description;
 
     @NonNull
     @ColumnInfo(name = "category_id")
-    private Long categoryId;
+    public Long categoryId;
 
     @Ignore
-    private Category category;
+    public Category category;
+
+    public SubCategory(@NonNull String code, String description, @NonNull Long categoryId) {
+        this.code = code;
+        this.description = description;
+        this.categoryId = categoryId;
+    }
 
     public SubCategory(@NonNull String code, String description, @NonNull Category category) {
         this.code = code;
         this.description = description;
         this.category = category;
 
-        categoryId = category.getId();
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public Long getCategoryId() {
-        return category.getId();
-    }
-
-    public String getCategoryCode(){
-        return category.getCode();
+        categoryId = category.id;
     }
 }

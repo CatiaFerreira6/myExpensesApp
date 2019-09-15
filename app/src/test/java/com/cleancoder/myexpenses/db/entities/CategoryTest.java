@@ -11,6 +11,6 @@ public class CategoryTest {
         Type expenseType = new Type("EXPENSE", "Expense");
         Category category = new Category("categoryCode", "categoryDescription", expenseType);
 
-        assertEquals((Long) 0L, category.getId());
+        assertEquals((Long) 0L, category.id);
     }
 }

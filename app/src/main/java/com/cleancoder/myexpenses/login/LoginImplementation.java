@@ -35,7 +35,7 @@ public class LoginImplementation implements LoginContract {
     private User userExists(String email, String password){
         User user = userRepository.getByEmail(email);
 
-        if(user.getPassword().equals(password)){
+        if(user.password.equals(password)){
             return user;
         } else {
             return null;

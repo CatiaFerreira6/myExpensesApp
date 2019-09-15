@@ -10,22 +10,22 @@ public class TypeTest {
 
     @Test
     public void getId() {
-        assertEquals(Long.valueOf(0L), type.getId());
+        assertEquals(Long.valueOf(0L), type.id);
     }
 
     @Test
     public void getId2() {
         type = new Type(20L, "code", "description");
-        assertEquals(Long.valueOf(20L), type.getId());
+        assertEquals(Long.valueOf(20L), type.id);
     }
 
     @Test
     public void getCode() {
-        assertEquals("code", type.getCode());
+        assertEquals("code", type.code);
     }
 
     @Test
     public void getDescription() {
-        assertEquals("description", type.getDescription());
+        assertEquals("description", type.description);
     }
 }

@@ -1,12 +1,23 @@
 package com.cleancoder.myexpenses.login;
 
+import android.content.Context;
+
+import com.cleancoder.myexpenses.App;
+
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.junit.Assert.*;
 
+@RunWith(MockitoJUnitRunner.class)
 public class LoginImplementationTest {
 
-    private LoginContract login = new LoginImplementation();
+    @Mock
+    Context mockContext;
+
+    private LoginContract login = new LoginImplementation(new App());
 
     @Test
     public void validEmail() {
@@ -24,8 +35,8 @@ public class LoginImplementationTest {
 
     @Test
     public void login() {
-        assertTrue(login.login("foo@example.com", "hello"));
-        assertFalse(login.login("test@fail.com", "validPassword"));
-        assertFalse(login.login("fooexample.com","hell"));
+        assertNotNull(login.login("foo@example.com", "hello"));
+        assertNull(login.login("test@fail.com", "validPassword"));
+        assertNull(login.login("fooexample.com","hell"));
     }
 }

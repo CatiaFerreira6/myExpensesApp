@@ -57,7 +57,10 @@ public class UserRepository {
 
         @Override
         protected User doInBackground(final User... params) {
-            return userRepo.create(params[0]);
+            Long id = userRepo.create(params[0]);
+            params[0].id = id;
+
+            return params[0];
         }
     }
 
@@ -75,7 +78,11 @@ public class UserRepository {
 
         @Override
         protected User doInBackground(final User... params) {
-            return userRepo.update(params[0]);
+            if(userRepo.update(params[0]) > 0) {
+                return params[0];
+            } else {
+                return null;
+            }
         }
     }
 
@@ -93,7 +100,11 @@ public class UserRepository {
 
         @Override
         protected Boolean doInBackground(final User... params) {
-            return userRepo.delete(params[0].getId());
+            if(userRepo.delete(params[0]) > 0){
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 }

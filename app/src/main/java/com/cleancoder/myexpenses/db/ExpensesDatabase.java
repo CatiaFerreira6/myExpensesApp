@@ -27,7 +27,7 @@ import com.cleancoder.myexpenses.db.entities.SubCategory;
 import com.cleancoder.myexpenses.db.entities.Type;
 import com.cleancoder.myexpenses.db.entities.User;
 
-@Database(entities = {User.class, Account.class, Type.class, Category.class, SubCategory.class, Record.class}, version = 1)
+@Database(entities = {User.class, Account.class, Type.class, Category.class, SubCategory.class, Record.class}, version = 1, exportSchema = false)
 @TypeConverters(DateConverters.class)
 public abstract class ExpensesDatabase extends RoomDatabase {
 

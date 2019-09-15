@@ -3,7 +3,7 @@ package com.cleancoder.myexpenses;
 import android.arch.lifecycle.LiveData;
 
 import com.cleancoder.myexpenses.db.ExpensesDatabase;
-import com.cleancoder.myexpenses.db.entities.Record;
+import com.cleancoder.myexpenses.db.entities.RecordWithEntities;
 
 import java.util.List;
 
@@ -28,7 +28,7 @@ public class ExpensesRepository {
         return sInstance;
     }
 
-    public LiveData<List<Record>> latestRecords(Long accountId) {
+    public LiveData<List<RecordWithEntities>> latestRecords(Long accountId) {
         return mDatabase.recordRepo().getLatest(accountId, 5);
     }
 }

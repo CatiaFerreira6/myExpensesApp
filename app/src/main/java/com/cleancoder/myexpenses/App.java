@@ -7,7 +7,7 @@ import com.cleancoder.myexpenses.db.entities.User;
 import com.cleancoder.myexpenses.db.repositories.AccountRepository;
 import com.cleancoder.myexpenses.db.repositories.UserRepository;
 
-public class App extends Application{
+public class App extends Application {
 
     private AppExecutors mAppExecutors;
 

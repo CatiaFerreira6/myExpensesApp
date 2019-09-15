@@ -8,24 +8,24 @@ import static org.junit.Assert.*;
 
 public class RecordTest {
 
-    private Account acct = new Account("number", "description", 3000d);
+    private Account acct = new Account("number", 3000d, "description");
     private Date newDate = new Date();
 
-    private Record record = new Record(acct, new SubCategory("code", null, null), newDate, 230.23, null);
+    private Record record = new Record(acct, new SubCategory("code", null, 1L), newDate, 230.23, null);
 
     @Test
     public void getAccount() {
-        assertEquals(acct,record.getAccount());
+        assertEquals(acct,record.account);
     }
 
     @Test
     public void getDate() {
-        assertEquals(newDate, record.getDate());
+        assertEquals(newDate, record.date);
     }
 
     @Test
     public void getCurrentBalance() {
         Double recordBalance = 3000d + 230.23;
-        assertEquals(recordBalance, record.getCurrentBalance());
+        assertEquals(recordBalance, record.currentBalance);
     }
 }

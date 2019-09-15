@@ -18,11 +18,11 @@ public interface AccountRepositoryContract {
     Account get(String number);
 
     @Insert
-    Account create(Account account);
+    Long create(Account account);
 
     @Update
-    Account update(Account account);
+    int update(Account account);
 
     @Delete
-    boolean delete(Long id);
+    int delete(Account account);
 }

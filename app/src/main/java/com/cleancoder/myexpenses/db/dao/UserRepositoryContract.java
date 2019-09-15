@@ -17,7 +17,7 @@ public interface UserRepositoryContract {
     @Query("SELECT * from user where username = :username")
     User get(String username);
 
-    @Query("SELECT * from user " +
+    @Query("SELECT user.* from user " +
             "inner join account on account.id = account_id " +
             "where username = :username")
     User getWithAccount(String username);
@@ -27,11 +27,11 @@ public interface UserRepositoryContract {
     User getByEmail(String email);
 
     @Insert
-    User create(User user);
+    Long create(User user);
 
     @Update
-    User update(User user);
+    int update(User user);
 
     @Delete
-    boolean delete(Long id);
+    int delete(User user);
 }

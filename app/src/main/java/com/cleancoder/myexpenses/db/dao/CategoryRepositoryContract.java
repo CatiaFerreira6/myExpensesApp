@@ -13,12 +13,12 @@ public interface CategoryRepositoryContract {
 
     @Query("SELECT * from category " +
             "inner join type on type.id = type_id " +
-            "where id = :id")
+            "where category.id = :id")
     Category get(Long id);
 
     @Query("SELECT * from category " +
             "inner join type on type.id = type_id " +
-            "where code = :code")
+            "where category.code = :code")
     Category get(String code);
 
     @Query("SELECT * from category " +
@@ -27,12 +27,11 @@ public interface CategoryRepositoryContract {
     Category getByType(String code);
 
     @Insert
-    Category create(Category newCategory);
+    Long create(Category newCategory);
 
     @Update
-    Category update(Category updatedCategory);
+    int update(Category updatedCategory);
 
     @Delete
-    void delete(Long id);
-
+    int delete(Category category);
 }

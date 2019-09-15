@@ -49,7 +49,10 @@ public class AccountRepository {
 
         @Override
         protected Account doInBackground(final Account... params) {
-            return accountRepo.create(params[0]);
+            Long id = accountRepo.create(params[0]);
+            params[0].id = id;
+
+            return params[0];
         }
     }
 
@@ -67,7 +70,11 @@ public class AccountRepository {
 
         @Override
         protected Account doInBackground(final Account... params) {
-            return accountRepo.update(params[0]);
+            if(accountRepo.update(params[0]) > 0){
+                return params[0];
+            } else {
+                return null;
+            }
         }
     }
 
@@ -85,7 +92,11 @@ public class AccountRepository {
 
         @Override
         protected Boolean doInBackground(final Account... params) {
-            return accountRepo.delete(params[0].getId());
+            if(accountRepo.delete(params[0]) > 0){
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 }

@@ -23,11 +23,11 @@ public interface TypeRepositoryContract {
     Type get(String code);
 
     @Insert
-    Type create(Type type);
+    Long create(Type type);
 
     @Update
-    Type update(Type type);
+    int update(Type type);
 
     @Delete
-    boolean delete(Long id);
+    int delete(Type type);
 }
